@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FfCmS.Test.Unit", "FfCmS.Test.Unit\FfCmS.Test.Unit.csproj", "{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FfCmS.Web", "FfCmS.Web\FfCmS.Web.csproj", "{4F40FE47-9D3F-4B22-B7F6-584544C734E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FfCmS", "FfCmS\FfCmS.csproj", "{4F40FE47-9D3F-4B22-B7F6-584544C734E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
