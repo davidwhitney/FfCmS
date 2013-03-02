@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FfCmS", "FfCmS\FfCmS.csproj", "{8831F04F-952F-46E2-817F-A1DCD55CDEFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FfCmS.Test.Unit", "FfCmS.Test.Unit\FfCmS.Test.Unit.csproj", "{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{8831F04F-952F-46E2-817F-A1DCD55CDEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8831F04F-952F-46E2-817F-A1DCD55CDEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8831F04F-952F-46E2-817F-A1DCD55CDEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20AC451-C4ED-4C1D-BDD3-979127FDF5CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

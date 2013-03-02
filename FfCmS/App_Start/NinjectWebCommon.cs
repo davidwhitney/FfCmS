@@ -1,3 +1,5 @@
+using FfCmS.Code.Persistence;
+
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FfCmS.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FfCmS.App_Start.NinjectWebCommon), "Stop")]
 
@@ -53,6 +55,7 @@ namespace FfCmS.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IPersistence>().To<FileSystemPersistence>();
         }        
     }
 }
