@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Code.Model
+﻿namespace FfCmS.Model
 {
     public class Creator
     {

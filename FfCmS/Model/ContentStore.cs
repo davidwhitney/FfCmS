@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web;
-
-namespace FfCmS.Code.Model
+﻿namespace FfCmS.Model
 {
     public class ContentStore
     {

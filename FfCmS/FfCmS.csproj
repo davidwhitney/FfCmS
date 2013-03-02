@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FfCmS.Web</RootNamespace>
-    <AssemblyName>FfCmS.Web</AssemblyName>
+    <RootNamespace>FfCmS</RootNamespace>
+    <AssemblyName>FfCmS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -88,19 +88,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiModule.cs" />
-    <Compile Include="Code\Model\ContentItem.cs" />
-    <Compile Include="Code\Model\ContentStore.cs" />
-    <Compile Include="Code\Model\Creator.cs" />
-    <Compile Include="Code\Model\Page.cs" />
-    <Compile Include="Code\NinjectWebCommon.cs" />
-    <Compile Include="Code\Persistence\FileSystemContentRepository.cs" />
-    <Compile Include="Code\Persistence\FileSystemContentStoreRepository.cs" />
-    <Compile Include="Code\Persistence\IRepository.cs" />
-    <Compile Include="Code\Persistence\Storage.cs" />
-    <Compile Include="Controllers\ContentApiController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StoresApiController.cs" />
+    <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Modules\Api\ContentModule.cs" />
+    <Compile Include="Model\ContentItem.cs" />
+    <Compile Include="Model\ContentStore.cs" />
+    <Compile Include="Model\Creator.cs" />
+    <Compile Include="Model\Page.cs" />
+    <Compile Include="Modules\Api\RootModule.cs" />
+    <Compile Include="Modules\Api\StoresModule.cs" />
+    <Compile Include="Persistence\FileSystemContentRepository.cs" />
+    <Compile Include="Persistence\FileSystemContentStoreRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
+    <Compile Include="Persistence\Storage.cs" />
+    <Compile Include="Modules\UiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
