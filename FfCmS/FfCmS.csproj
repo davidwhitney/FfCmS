@@ -45,10 +45,20 @@
     <Reference Include="AttributeRouting.Web">
       <HintPath>..\packages\AttributeRouting.Core.Web.3.5\lib\net40\AttributeRouting.Web.dll</HintPath>
     </Reference>
+    <Reference Include="AttributeRouting.Web.Http">
+      <HintPath>..\packages\AttributeRouting.Core.Http.3.5\lib\net40\AttributeRouting.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Http.WebHost">
+      <HintPath>..\packages\AttributeRouting.WebApi.3.5\lib\net40\AttributeRouting.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="AttributeRouting.Web.Mvc">
       <HintPath>..\packages\AttributeRouting.3.5\lib\net40\AttributeRouting.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.2-unstable-8\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -80,9 +90,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -137,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AttributeRouting.cs" />
+    <Compile Include="App_Start\AttributeRoutingHttp.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -147,9 +155,12 @@
     <Compile Include="Code\Model\Creator.cs" />
     <Compile Include="Code\Model\Page.cs" />
     <Compile Include="Code\Persistence\FileSystemContentRepository.cs" />
+    <Compile Include="Code\Persistence\FileSystemContentStoreRepository.cs" />
     <Compile Include="Code\Persistence\IRepository.cs" />
+    <Compile Include="Code\Persistence\Storage.cs" />
     <Compile Include="Controllers\ContentApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoresApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

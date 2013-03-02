@@ -1,5 +1,6 @@
 using FfCmS.Code.Model;
 using FfCmS.Code.Persistence;
+using FfCmS.Controllers;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FfCmS.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FfCmS.App_Start.NinjectWebCommon), "Stop")]
@@ -25,6 +26,7 @@ namespace FfCmS.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+
             bootstrapper.Initialize(CreateKernel);
         }
         
@@ -47,6 +49,10 @@ namespace FfCmS.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             
             RegisterServices(kernel);
+
+            ContentApiController.InitStorage = () => kernel.Get<Storage>();
+            StoresApiController.InitStorage = () => kernel.Get<Storage>();
+    
             return kernel;
         }
 
@@ -57,6 +63,7 @@ namespace FfCmS.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRepository<ContentItem>>().To<FileSystemContentRepository>();
+            kernel.Bind<IRepository<ContentStore>>().To<FileSystemContentStoreRepository>();
         }        
     }
 }
