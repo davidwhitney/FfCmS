@@ -145,8 +145,9 @@
     <Compile Include="Code\Model\ContentItem.cs" />
     <Compile Include="Code\Model\ContentStore.cs" />
     <Compile Include="Code\Model\Creator.cs" />
-    <Compile Include="Code\Persistence\FileSystemPersistence.cs" />
-    <Compile Include="Code\Persistence\IPersistence.cs" />
+    <Compile Include="Code\Model\Page.cs" />
+    <Compile Include="Code\Persistence\FileSystemContentRepository.cs" />
+    <Compile Include="Code\Persistence\IRepository.cs" />
     <Compile Include="Controllers\ContentApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

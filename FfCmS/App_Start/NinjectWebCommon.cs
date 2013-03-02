@@ -1,3 +1,4 @@
+using FfCmS.Code.Model;
 using FfCmS.Code.Persistence;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FfCmS.App_Start.NinjectWebCommon), "Start")]
@@ -55,7 +56,7 @@ namespace FfCmS.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IPersistence>().To<FileSystemPersistence>();
+            kernel.Bind<IRepository<ContentItem>>().To<FileSystemContentRepository>();
         }        
     }
 }

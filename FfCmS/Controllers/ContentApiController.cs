@@ -7,11 +7,14 @@ namespace FfCmS.Controllers
 {
     public class ContentApiController : ApiController
     {
-        private readonly IPersistence _persistence;
+        private readonly IRepository<ContentStore> _contentStoreRepository;
+        private readonly IRepository<ContentItem> _contentRepository;
 
-        public ContentApiController(IPersistence persistence)
+        public ContentApiController(IRepository<ContentStore> contentStoreRepository,
+                                    IRepository<ContentItem> contentRepository)
         {
-            _persistence = persistence;
+            _contentStoreRepository = contentStoreRepository;
+            _contentRepository = contentRepository;
         }
 
         [GET("/api/stores")]
