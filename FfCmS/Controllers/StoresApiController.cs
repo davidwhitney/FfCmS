@@ -16,12 +16,14 @@ namespace FfCmS.Controllers
             _storage = InitStorage();
         }
 
+        [HttpGet]
         [GET("api/stores")]
         public Page<ContentStore> Index()
         {
             return _storage.ContentStore.List();
         }
 
+        [HttpGet]
         [GET("api/stores/{storeId}")]
         public void RetrieveStore()
         {
