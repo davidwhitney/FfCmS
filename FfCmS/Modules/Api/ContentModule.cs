@@ -1,8 +1,10 @@
-﻿namespace FfCmS.Modules.Api
+﻿using FfCmS.Persistence;
+
+namespace FfCmS.Modules.Api
 {
     public class ContentModule : Nancy.NancyModule
     {
-        public ContentModule()
+        public ContentModule(Storage storage)
             : base("api/stores")
         {
             Get["{storeId}/content"] = _ => "GET {storeId}/content";
