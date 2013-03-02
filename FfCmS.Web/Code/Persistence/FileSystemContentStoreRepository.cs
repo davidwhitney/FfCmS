@@ -7,7 +7,13 @@ namespace FfCmS.Code.Persistence
     {
         public Page<ContentStore> List()
         {
-            throw new NotImplementedException();
+            return new Page<ContentStore>
+                {
+                    new ContentStore(),
+                    new ContentStore(),
+                    new ContentStore(),
+                    new ContentStore(),
+                };
         }
 
         public ContentStore SaveOrUpdate(ContentStore item)
