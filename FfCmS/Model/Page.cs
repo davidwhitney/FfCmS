@@ -7,17 +7,24 @@ namespace FfCmS.Model
         public Page()
         {
         }
+
+        public Page(IList<TData> items)
+            : this(1, items.Count, items.Count)
+        {
+            AddRange(items);
+        }
+        
+        public Page(IEnumerable<TData> initialPayload, int pageNumber, int pageSize, int totalResultSetSize)
+            : this(pageNumber, pageSize, totalResultSetSize)
+        {
+            AddRange(initialPayload);
+        }
+
         public Page(int pageNumber, int pageSize, int totalResultSetSize)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
             Hits = totalResultSetSize;
-        }
-
-        public Page(int pageNumber, int pageSize, int totalResultSetSize, IEnumerable<TData> initialPayload)
-            : this(pageNumber, pageSize, totalResultSetSize)
-        {
-            AddRange(initialPayload);
         }
 
         public int Hits { get; set; }

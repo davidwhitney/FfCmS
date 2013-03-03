@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using FfCmS.Features.Persistence;
+﻿using FfCmS.Features.Persistence;
 using Nancy;
 
 namespace FfCmS.Features.Modules.Api
@@ -9,22 +8,9 @@ namespace FfCmS.Features.Modules.Api
         public ContentModule(Storage storage)
             : base("api/stores")
         {
-            Options["/"] = _ => Routes.Select(item => item.Description).ToList();
-
-            Get["/"] = _ =>
-                {
-                    return storage.ContentStore.List();
-                };
-
-            Get["/{storeId}"] = _ =>
-                {
-                    return "GET api/stores/{storeId}";
-                };
-
-            Get["/{storeId}/content"] = _ =>
-                {
-                    return "GET {storeId}/content";
-                };
+            Get["/"] = _ => storage.ContentStore.List();
+            Get["/{storeId}"] = _ => storage.ContentStore.Retrieve(_.StoreId);
+            Get["/{storeId}/content"] = _ => storage.ContentStore.Retrieve((string)_.StoreId).List();
 
             Post["/{storeId}/content"] = _ =>
                 {

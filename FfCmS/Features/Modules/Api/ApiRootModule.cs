@@ -9,13 +9,9 @@ namespace FfCmS.Features.Modules.Api
         public ApiRootModule(Storage storage)
             : base("api")
         {
-            Get["/"] = _ =>
-                {
-                    var contentModule = new ContentModule(null);
-                    var r =
-                        contentModule.Routes.Select(route => route.Description.Method + " - " + route.Description.Path).ToList();
-                    return string.Join("<br/>", r);
-                };
+            Get["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
+            Options["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
         }
+
     }
 }

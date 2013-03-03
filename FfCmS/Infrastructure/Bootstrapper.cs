@@ -3,6 +3,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Web;
 using FfCmS.Features.Persistence;
+using FfCmS.Features.Persistence.FileSystem;
 using FfCmS.Model;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -24,8 +25,7 @@ namespace FfCmS.Infrastructure
         {
             existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
 
-            existingContainer.Bind<IRepository<ContentItem>>().To<FileSystemContentRepository>();
-            existingContainer.Bind<IRepository<ContentStore>>().To<FileSystemContentStoreRepository>();
+            existingContainer.Bind<IRepository<IContentStore>>().To<FileSystemContentStoreRepository>();
             existingContainer.Bind<string>()
                              .ToMethod(x => HttpContext.Current.Server.MapPath("~/App_Data"))
                              .WhenInjectedInto(typeof(FileSystemContentStoreRepository));

@@ -1,16 +1,15 @@
-﻿using FfCmS.Model;
+﻿using FfCmS.Features.Persistence.FileSystem;
+using FfCmS.Model;
 
 namespace FfCmS.Features.Persistence
 {
     public class Storage
     {
-        public IRepository<ContentStore> ContentStore { get; set; }
-        public IRepository<ContentItem> ContentItemStore { get; set; }
+        public IRepository<IContentStore> ContentStore { get; set; }
 
-        public Storage(IRepository<ContentStore> contentStore, IRepository<ContentItem> contentItemStore)
+        public Storage(IRepository<IContentStore> contentStore)
         {
             ContentStore = contentStore;
-            ContentItemStore = contentItemStore;
         }
     }
 }
