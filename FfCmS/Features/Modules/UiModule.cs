@@ -7,14 +7,7 @@ namespace FfCmS.Features.Modules
         public UiModule()
         {
             Get["/"] = _ => "Hello world.";
-
-            Options["/"] = _ =>
-            {
-                var routesss =
-                    Routes.Select(route => route.Description.Method + " - " + route.Description.Path).ToList();
-
-                return string.Join("<br/>", routesss);
-            };
+            Options["/"] = _ => PrettyRoutePrinting.RoutesToHtml(Routes);
         }
     }
 }

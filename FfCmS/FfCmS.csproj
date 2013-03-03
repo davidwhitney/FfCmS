@@ -96,6 +96,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\PrettyRoutePrinting.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Features\Modules\Api\ContentModule.cs" />
     <Compile Include="Model\ContentItem.cs" />
@@ -103,12 +104,12 @@
     <Compile Include="Model\Creator.cs" />
     <Compile Include="Model\Page.cs" />
     <Compile Include="Features\Modules\Api\RootModule.cs" />
-    <Compile Include="Features\Modules\Api\StoresModule.cs" />
     <Compile Include="Features\Persistence\FileSystemContentRepository.cs" />
     <Compile Include="Features\Persistence\FileSystemContentStoreRepository.cs" />
     <Compile Include="Features\Persistence\IRepository.cs" />
     <Compile Include="Features\Persistence\Storage.cs" />
     <Compile Include="Features\Modules\UiModule.cs" />
+    <Compile Include="Model\StoreType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
