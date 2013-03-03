@@ -1,6 +1,7 @@
 using System;
 using System.IO.Abstractions;
 using System.Linq;
+using System.Web;
 using FfCmS.Features.Persistence;
 using FfCmS.Model;
 using Nancy;
@@ -21,9 +22,13 @@ namespace FfCmS.Infrastructure
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
         {
+            existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
+
             existingContainer.Bind<IRepository<ContentItem>>().To<FileSystemContentRepository>();
             existingContainer.Bind<IRepository<ContentStore>>().To<FileSystemContentStoreRepository>();
-            existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
+            existingContainer.Bind<string>()
+                             .ToMethod(x => HttpContext.Current.Server.MapPath("~/App_Data"))
+                             .WhenInjectedInto(typeof(FileSystemContentStoreRepository));
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)

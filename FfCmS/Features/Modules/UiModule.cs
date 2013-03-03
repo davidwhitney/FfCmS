@@ -7,7 +7,6 @@ namespace FfCmS.Features.Modules
         public UiModule()
         {
             Get["/"] = _ => "Hello world.";
-            Options["/"] = _ => PrettyRoutePrinting.RoutesToHtml(Routes);
         }
     }
 }

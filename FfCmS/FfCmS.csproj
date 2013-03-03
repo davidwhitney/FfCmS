@@ -96,7 +96,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\PrettyRoutePrinting.cs" />
+    <Compile Include="Features\Modules\Api\ApiRootModule.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Features\Modules\Api\ContentModule.cs" />
     <Compile Include="Model\ContentItem.cs" />
@@ -120,6 +120,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\FileSystemContentStores\TestStore1\" />
+    <Folder Include="App_Data\FileSystemContentStores\TestStore2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
