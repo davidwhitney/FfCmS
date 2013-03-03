@@ -1,4 +1,6 @@
-﻿using System.IO.Abstractions;
+﻿using System.IO;
+using System.IO.Abstractions;
+using System.Linq;
 using FfCmS.Model;
 using Newtonsoft.Json;
 
@@ -20,29 +22,38 @@ namespace FfCmS.Features.Persistence.FileSystem
             _fileSystem = fileSystem;
         }
 
-        public Page<ContentItem> List()
+        public Page<string> List()
         {
-            var items = new Page<ContentItem>();
             var fileNames = _fileSystem.Directory.GetFiles(_directory);
-            
-            foreach (var fileName in fileNames)
-            {
-                var fileContents = _fileSystem.File.ReadAllText(fileName);
-                var item = JsonConvert.DeserializeObject<ContentItem>(fileContents);
-                items.Add(item);
-            }
-
+            var items = new Page<string>();
+            items.AddRange(fileNames.Select(fileName => fileName.Replace(_directory + "\\", "")));
             return items;
         }
 
         public ContentItem SaveOrUpdate(ContentItem item)
         {
-            throw new System.NotImplementedException();
-        }
+            if (string.IsNullOrWhiteSpace(item.Id))
+            {
+                item.Id = item.Title;
+            }
 
+            var text = JsonConvert.SerializeObject(item);
+            var fileName = FileNameForContentItemId(item.Id);
+            _fileSystem.File.WriteAllText(fileName, text);
+
+            return item;
+        }
+        
         public ContentItem Retrieve(string id)
         {
-            throw new System.NotImplementedException();
+            var fileName = FileNameForContentItemId(id);
+            var fileContents = _fileSystem.File.ReadAllText(fileName);
+            return JsonConvert.DeserializeObject<ContentItem>(fileContents);
+        }
+
+        private string FileNameForContentItemId(string id)
+        {
+            return Path.Combine(_directory, id + ".json");
         }
     }
 }

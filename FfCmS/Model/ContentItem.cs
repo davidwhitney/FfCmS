@@ -12,5 +12,10 @@ namespace FfCmS.Model
         public string AuthorName { get; set; }
 
         public List<string> Tags { get; set; }
+
+        public ContentItem()
+        {
+            Tags = new List<string>();
+        }
     }
 }

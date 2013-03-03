@@ -1,12 +1,15 @@
-﻿using FfCmS.Features.Persistence;
-
-namespace FfCmS.Model
+﻿namespace FfCmS.Model
 {
-    public interface IContentStore : IRepository<ContentItem>
+    public interface IContentStore
     {
         string Id { get; set; }
         string Description { get; set; }
         string DefaultCulture { get; set; }
         StoreType StoreType { get; set; }
+
+
+        Page<string> List();
+        ContentItem SaveOrUpdate(ContentItem item);
+        ContentItem Retrieve(string id);
     }
 }
