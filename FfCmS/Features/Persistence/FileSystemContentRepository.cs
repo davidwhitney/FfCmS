@@ -1,7 +1,7 @@
 ﻿using System;
 using FfCmS.Model;
 
-namespace FfCmS.Persistence
+namespace FfCmS.Features.Persistence
 {
     public class FileSystemContentRepository : IRepository<ContentItem>
     {

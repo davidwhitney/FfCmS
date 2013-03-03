@@ -1,9 +1,13 @@
+using System;
+using System.IO.Abstractions;
+using System.Linq;
+using FfCmS.Features.Persistence;
 using FfCmS.Model;
-using FfCmS.Persistence;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
 using Ninject;
+using Ninject.Extensions.Conventions;
 
 namespace FfCmS.Infrastructure
 {
@@ -19,6 +23,7 @@ namespace FfCmS.Infrastructure
         {
             existingContainer.Bind<IRepository<ContentItem>>().To<FileSystemContentRepository>();
             existingContainer.Bind<IRepository<ContentStore>>().To<FileSystemContentStoreRepository>();
+            existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)
@@ -30,6 +35,11 @@ namespace FfCmS.Infrastructure
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
+        }
+
+        private static bool IsServiceType(Type type)
+        {
+            return type.IsClass && type.GetInterfaces().Any(intface => intface.Name == "I" + type.Name);
         }
     }
 }

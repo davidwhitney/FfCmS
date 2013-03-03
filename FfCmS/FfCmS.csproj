@@ -65,6 +65,12 @@
     <Reference Include="Ninject.Extensions.ChildKernel">
       <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.0.2-unstable-1\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.2-unstable-2\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>..\packages\System.IO.Abstractions.1.4.0.40\lib\net35\System.IO.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,18 +97,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Bootstrapper.cs" />
-    <Compile Include="Modules\Api\ContentModule.cs" />
+    <Compile Include="Features\Modules\Api\ContentModule.cs" />
     <Compile Include="Model\ContentItem.cs" />
     <Compile Include="Model\ContentStore.cs" />
     <Compile Include="Model\Creator.cs" />
     <Compile Include="Model\Page.cs" />
-    <Compile Include="Modules\Api\RootModule.cs" />
-    <Compile Include="Modules\Api\StoresModule.cs" />
-    <Compile Include="Persistence\FileSystemContentRepository.cs" />
-    <Compile Include="Persistence\FileSystemContentStoreRepository.cs" />
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\Storage.cs" />
-    <Compile Include="Modules\UiModule.cs" />
+    <Compile Include="Features\Modules\Api\RootModule.cs" />
+    <Compile Include="Features\Modules\Api\StoresModule.cs" />
+    <Compile Include="Features\Persistence\FileSystemContentRepository.cs" />
+    <Compile Include="Features\Persistence\FileSystemContentStoreRepository.cs" />
+    <Compile Include="Features\Persistence\IRepository.cs" />
+    <Compile Include="Features\Persistence\Storage.cs" />
+    <Compile Include="Features\Modules\UiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

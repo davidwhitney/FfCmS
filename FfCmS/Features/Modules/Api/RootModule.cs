@@ -1,4 +1,4 @@
-namespace FfCmS.Modules.Api
+namespace FfCmS.Features.Modules.Api
 {
     public class RootModule : Nancy.NancyModule
     {

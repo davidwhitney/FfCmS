@@ -1,6 +1,6 @@
-﻿using FfCmS.Persistence;
+﻿using FfCmS.Features.Persistence;
 
-namespace FfCmS.Modules.Api
+namespace FfCmS.Features.Modules.Api
 {
     public class ContentModule : Nancy.NancyModule
     {

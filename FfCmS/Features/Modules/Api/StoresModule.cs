@@ -1,7 +1,7 @@
-using FfCmS.Persistence;
+using FfCmS.Features.Persistence;
 using Nancy;
 
-namespace FfCmS.Modules.Api
+namespace FfCmS.Features.Modules.Api
 {
     public class StoresModule : Nancy.NancyModule
     {
