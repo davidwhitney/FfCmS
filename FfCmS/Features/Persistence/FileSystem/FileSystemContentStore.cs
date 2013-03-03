@@ -53,6 +53,7 @@ namespace FfCmS.Features.Persistence.FileSystem
 
         private string FileNameForContentItemId(string id)
         {
+            id = Path.GetInvalidFileNameChars().Aggregate(id, (current, character) => current.Replace(character, '-'));
             return Path.Combine(_directory, id + ".json");
         }
     }

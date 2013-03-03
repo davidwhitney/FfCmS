@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FfCmS.Model
 {
@@ -12,10 +13,12 @@ namespace FfCmS.Model
         public string AuthorName { get; set; }
 
         public List<string> Tags { get; set; }
+        public DateTime Created { get; set; }
 
         public ContentItem()
         {
             Tags = new List<string>();
+            Created = DateTime.Now;
         }
     }
 }
