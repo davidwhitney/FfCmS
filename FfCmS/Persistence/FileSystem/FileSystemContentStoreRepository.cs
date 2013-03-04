@@ -40,7 +40,7 @@ namespace FfCmS.Persistence.FileSystem
 
         public IContentStore Retrieve(string id)
         {
-            return List().Single(x => x.Id == id);
+            return List().FirstOrDefault(x => x.Id == id);
         }
 
         private IContentStore BuildStoreIndex(string directory)

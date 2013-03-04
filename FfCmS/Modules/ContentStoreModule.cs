@@ -14,11 +14,25 @@ namespace FfCmS.Modules
         {
             _storage = storage;
 
-            Get["/"] = _ => _storage.ContentStore.Retrieve((string)_.storeId).List(50, 0);
+            Get["/"] = _ =>
+                {
+                    var store = _storage.ContentStore.Retrieve((string)_.storeId);
+                    if (store == null)
+                    {
+                        return HttpStatusCode.NotFound;
+                    }
+
+                    return store.List(50, 0);
+                };
             Post["/"] = _ =>
                 {
                     var posted = this.Bind<ContentItem>("id");
-                    var store = _storage.ContentStore.Retrieve((string)_.storeId);
+                    var store = _storage.ContentStore.Retrieve((string)_.storeId); 
+                    if (store == null)
+                    {
+                        return HttpStatusCode.NotFound;
+                    }
+
                     return store.SaveOrUpdate(posted);
                 };
 

@@ -47,6 +47,12 @@ namespace FfCmS.Persistence.FileSystem
         public ContentItem Retrieve(string id)
         {
             var fileName = FileNameForContentItemId(id);
+
+            if (!_fileSystem.File.Exists(fileName))
+            {
+                return null;
+            }
+
             var fileContents = _fileSystem.File.ReadAllText(fileName);
             return JsonConvert.DeserializeObject<ContentItem>(fileContents);
         }

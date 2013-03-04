@@ -11,7 +11,17 @@ namespace FfCmS.Modules
             : base("api/stores/{storeId}/content/{itemId}")
         {
             _storage = storage;
-            Get["/"] = _ =>  _storage.ContentStore.Retrieve((string) _.storeId).Retrieve(_.itemId);
+            Get["/"] = _ =>
+                {
+                    var store = _storage.ContentStore.Retrieve((string) _.storeId);
+                    if (store == null)
+                    {
+                        return HttpStatusCode.NotFound;
+                    }
+
+                    var item = store.Retrieve(_.itemId);
+                    return item ?? HttpStatusCode.NotFound;
+                };
         }
     }
 }

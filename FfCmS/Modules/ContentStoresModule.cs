@@ -12,7 +12,7 @@ namespace FfCmS.Modules
         {
             _storage = storage;
             Get["/"] = _ => _storage.ContentStore.List();
-            Get["/{storeId}"] = _ => _storage.ContentStore.Retrieve(_.storeId);
+            Get["/{storeId}"] = _ => _storage.ContentStore.Retrieve(_.storeId) ?? HttpStatusCode.NotFound; ;
         }
     }
 }
