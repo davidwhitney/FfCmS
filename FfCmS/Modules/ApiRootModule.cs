@@ -8,8 +8,8 @@ namespace FfCmS.Modules
         public ApiRootModule()
             : base("api")
         {
-            Get["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
-            Options["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
+            Get["/"] = _ => new ContentStoresModule(null).Routes.Select(item => item.Description).ToList();
+            Options["/"] = _ => new ContentStoresModule(null).Routes.Select(item => item.Description).ToList();
         }
     }
 }

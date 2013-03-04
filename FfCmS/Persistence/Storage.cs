@@ -1,7 +1,6 @@
-﻿using FfCmS.Features.Persistence.FileSystem;
-using FfCmS.Model;
+﻿using FfCmS.Model;
 
-namespace FfCmS.Features.Persistence
+namespace FfCmS.Persistence
 {
     public class Storage
     {

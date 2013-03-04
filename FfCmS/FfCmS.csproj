@@ -105,9 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\ApiRootModule.cs" />
+    <Compile Include="Modules\ContentItemsModule.cs" />
+    <Compile Include="Modules\ContentStoreModule.cs" />
     <Compile Include="Persistence\FileSystem\FileSystemContentStore.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
-    <Compile Include="Modules\ContentModule.cs" />
+    <Compile Include="Modules\ContentStoresModule.cs" />
     <Compile Include="Model\ContentItem.cs" />
     <Compile Include="Model\Creator.cs" />
     <Compile Include="Model\IContentStore.cs" />
@@ -124,9 +126,9 @@
     <Content Include="Views\ApiRoot\List`1.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\Content\Page[IContentStore].cshtml" />
-    <Content Include="Views\Content\IContentStore.cshtml" />
-    <Content Include="Views\Content\Page[string].cshtml" />
+    <Content Include="Views\ContentStores\Page[IContentStore].cshtml" />
+    <Content Include="Views\ContentStores\IContentStore.cshtml" />
+    <Content Include="Views\ContentStore\Page[string].cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,6 +139,7 @@
   <ItemGroup>
     <Folder Include="App_Data\FileSystemContentStores\TestStore1\" />
     <Folder Include="App_Data\FileSystemContentStores\TestStore2\" />
+    <Folder Include="Views\ContentItems\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

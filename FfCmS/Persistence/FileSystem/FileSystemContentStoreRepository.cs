@@ -5,7 +5,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using FfCmS.Model;
 
-namespace FfCmS.Features.Persistence.FileSystem
+namespace FfCmS.Persistence.FileSystem
 {
     public class FileSystemContentStoreRepository : IRepository<IContentStore>
     {

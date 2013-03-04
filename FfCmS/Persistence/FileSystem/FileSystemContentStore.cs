@@ -4,7 +4,7 @@ using System.Linq;
 using FfCmS.Model;
 using Newtonsoft.Json;
 
-namespace FfCmS.Features.Persistence.FileSystem
+namespace FfCmS.Persistence.FileSystem
 {
     public class FileSystemContentStore : IContentStore
     {
