@@ -26,6 +26,16 @@ namespace FfCmS.Infrastructure
                 {
                     return string.Concat("Views/", context.ModuleName, "/", viewName);
                 });
+
+            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+                {
+                    Type type = model.GetType();
+                    var firstInterface = type.GetInterfaces().FirstOrDefault();
+                    return firstInterface != null
+                               ? string.Concat("Views/", context.ModuleName, "/", firstInterface.Name)
+                               : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
+                });
+
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
