@@ -93,27 +93,36 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-responsive.css" />
+    <Content Include="Content\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Modules\Api\ApiRootModule.cs" />
-    <Compile Include="Features\Persistence\FileSystem\FileSystemContentStore.cs" />
+    <Compile Include="Modules\ApiRootModule.cs" />
+    <Compile Include="Persistence\FileSystem\FileSystemContentStore.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
-    <Compile Include="Features\Modules\Api\ContentModule.cs" />
+    <Compile Include="Modules\ContentModule.cs" />
     <Compile Include="Model\ContentItem.cs" />
     <Compile Include="Model\Creator.cs" />
     <Compile Include="Model\IContentStore.cs" />
     <Compile Include="Model\Page.cs" />
-    <Compile Include="Features\Modules\Api\RootModule.cs" />
-    <Compile Include="Features\Persistence\FileSystem\FileSystemContentStoreRepository.cs" />
-    <Compile Include="Features\Persistence\IRepository.cs" />
-    <Compile Include="Features\Persistence\Storage.cs" />
-    <Compile Include="Features\Modules\UiModule.cs" />
+    <Compile Include="Persistence\FileSystem\FileSystemContentStoreRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
+    <Compile Include="Persistence\Storage.cs" />
+    <Compile Include="Modules\UiModule.cs" />
     <Compile Include="Model\StoreType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Views\ApiRoot\List`1.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

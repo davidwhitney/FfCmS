@@ -8,6 +8,7 @@ using FfCmS.Model;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
+using Nancy.TinyIoc;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
@@ -17,8 +18,8 @@ namespace FfCmS.Infrastructure
     {
         protected override void ApplicationStartup(IKernel container, IPipelines pipelines)
         {
-            // No registrations should be performed in here, however you may
-            // resolve things that are needed during application startup.
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("../../Views/", context.ModuleName, "/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Views/", context.ModuleName, "/", viewName));
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)

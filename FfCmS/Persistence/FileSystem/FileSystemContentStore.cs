@@ -22,9 +22,9 @@ namespace FfCmS.Features.Persistence.FileSystem
             _fileSystem = fileSystem;
         }
 
-        public Page<string> List()
+        public Page<string> List(int take = 50, int skip = 0)
         {
-            var fileNames = _fileSystem.Directory.GetFiles(_directory);
+            var fileNames = _fileSystem.Directory.GetFiles(_directory).Skip(skip).Take(take);
             var items = new Page<string>();
             items.AddRange(fileNames.Select(fileName => fileName.Replace(_directory + "\\", "")));
             return items;

@@ -1,10 +1,9 @@
-﻿using System;
-using FfCmS.Features.Persistence;
+﻿using FfCmS.Features.Persistence;
 using FfCmS.Model;
 using Nancy;
 using Nancy.ModelBinding;
 
-namespace FfCmS.Features.Modules.Api
+namespace FfCmS.Features.Modules
 {
     public class ContentModule : NancyModule
     {
@@ -17,7 +16,7 @@ namespace FfCmS.Features.Modules.Api
 
             Get["/"] = _ => _storage.ContentStore.List();
             Get["/{storeId}"] = _ => _storage.ContentStore.Retrieve(_.storeId);
-            Get["/{storeId}/content"] = _ => _storage.ContentStore.Retrieve((string)_.storeId).List();
+            Get["/{storeId}/content"] = _ => _storage.ContentStore.Retrieve((string)_.storeId).List(50, 0);
 
             Post["/{storeId}/content"] = _ =>
                 {

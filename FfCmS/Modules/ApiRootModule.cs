@@ -1,7 +1,7 @@
 using System.Linq;
 using Nancy;
 
-namespace FfCmS.Features.Modules.Api
+namespace FfCmS.Features.Modules
 {
     public class ApiRootModule : NancyModule
     {
@@ -11,6 +11,5 @@ namespace FfCmS.Features.Modules.Api
             Get["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
             Options["/"] = _ => new ContentModule(null).Routes.Select(item => item.Description).ToList();
         }
-
     }
 }
