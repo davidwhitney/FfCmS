@@ -1,9 +1,11 @@
-﻿@using Newtonsoft.Json
+﻿@using System
+@using Newtonsoft.Json
 @inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<Nancy.Routing.RouteDescription>>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
 }
 
-
-@JsonConvert.SerializeObject(Model, Formatting.Indented)
+<code>
+<pre>@JsonConvert.SerializeObject(Model, Formatting.Indented)</pre>
+</code>
