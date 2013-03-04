@@ -115,7 +115,7 @@
     <Compile Include="Persistence\FileSystem\FileSystemContentStoreRepository.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Storage.cs" />
-    <Compile Include="Modules\UiModule.cs" />
+    <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Model\StoreType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -123,6 +123,8 @@
     <Content Include="packages.config" />
     <Content Include="Views\ApiRoot\List`1.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Content\Page`1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

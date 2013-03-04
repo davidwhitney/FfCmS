@@ -1,6 +1,4 @@
-﻿@using System
-@using Newtonsoft.Json
-@inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<Nancy.Routing.RouteDescription>>
+﻿@inherits NancyRazorViewBase<FfCmS.Model.Page<FfCmS.Model.IContentStore>>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
@@ -11,19 +9,19 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Method</th>
-            <th>Uri</th>
-            <th>Segments</th>
+            <th>Store Id</th>
             <th>Description</th>
+            <th>Store Type</th>
+            <th>Default Culture</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model){
             <tr>
-                <td>@item.Method</td>
-                <td>@item.Path</td>
-                <td>@item.Segments</td>
+                <td>@item.Id</td>
                 <td>@item.Description</td>
+                <td>@item.StoreType</td>
+                <td>@item.DefaultCulture</td>
             </tr>
         }
     </tbody>

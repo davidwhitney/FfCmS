@@ -3,7 +3,7 @@ using FfCmS.Model;
 using Nancy;
 using Nancy.ModelBinding;
 
-namespace FfCmS.Features.Modules
+namespace FfCmS.Modules
 {
     public class ContentModule : NancyModule
     {

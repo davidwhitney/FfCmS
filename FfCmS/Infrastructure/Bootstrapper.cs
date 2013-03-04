@@ -18,8 +18,14 @@ namespace FfCmS.Infrastructure
     {
         protected override void ApplicationStartup(IKernel container, IPipelines pipelines)
         {
-            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("../../Views/", context.ModuleName, "/", viewName));
-            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Views/", context.ModuleName, "/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+                {
+                    return string.Concat("../../Views/", context.ModuleName, "/", viewName);
+                });
+            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+                {
+                    return string.Concat("Views/", context.ModuleName, "/", viewName);
+                });
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
