@@ -21,7 +21,7 @@
         @foreach (var item in Model){
             <tr>
                 <td>@item.Method</td>
-                <td>@item.Path</td>
+                <td><a href="/@item.Path">@item.Path</a></td>
                 <td>@item.Segments</td>
                 <td>@item.Description</td>
             </tr>

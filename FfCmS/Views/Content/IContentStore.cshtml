@@ -13,6 +13,7 @@
             <th>Description</th>
             <th>Store Type</th>
             <th>Default Culture</th>
+            <th>View</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
             <td>@Model.Description</td>
             <td>@Model.StoreType</td>
             <td>@Model.DefaultCulture</td>
+            <td>
+                <a href="@Model.Id/content" class="btn btn-primary">View Content</a>
+            </td>
         </tr>
     </tbody>
 </table>

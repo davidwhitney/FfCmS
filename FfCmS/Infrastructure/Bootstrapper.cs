@@ -36,6 +36,21 @@ namespace FfCmS.Infrastructure
                                : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
                 });
 
+            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+                {
+                    Type type = model.GetType();
+                    var isGeneric = type.IsGenericType;
+
+                    var nameToLookup = viewName;
+                    if (isGeneric)
+                    {
+                        var name = type.GetGenericArguments()[0].Name;
+                        nameToLookup = nameToLookup.Replace("`1", "[" + name + "]");
+                    }
+
+                    return string.Concat("Views/", context.ModuleName, "/", nameToLookup);
+                });
+
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)

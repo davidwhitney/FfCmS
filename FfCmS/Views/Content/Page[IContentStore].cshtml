@@ -13,6 +13,7 @@
             <th>Description</th>
             <th>Store Type</th>
             <th>Default Culture</th>
+            <th>View</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,9 @@
                 <td>@item.Description</td>
                 <td>@item.StoreType</td>
                 <td>@item.DefaultCulture</td>
+                <td>
+                    <a href="@item.Id" class="btn btn-primary">View Store</a>
+                </td>
             </tr>
         }
     </tbody>

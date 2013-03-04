@@ -124,8 +124,9 @@
     <Content Include="Views\ApiRoot\List`1.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\Content\Page`1.cshtml" />
+    <Content Include="Views\Content\Page[IContentStore].cshtml" />
     <Content Include="Views\Content\IContentStore.cshtml" />
+    <Content Include="Views\Content\Page[string].cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
