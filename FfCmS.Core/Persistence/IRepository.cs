@@ -1,6 +1,6 @@
-﻿using FfCmS.Model;
+﻿using FfCmS.Core.Model;
 
-namespace FfCmS.Persistence
+namespace FfCmS.Core.Persistence
 {
     public interface IRepository<TType>
     {

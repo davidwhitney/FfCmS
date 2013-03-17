@@ -68,8 +68,9 @@
     <Reference Include="Ninject.Extensions.Conventions">
       <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.2-unstable-2\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Abstractions">
-      <HintPath>..\packages\System.IO.Abstractions.1.4.0.40\lib\net35\System.IO.Abstractions.dll</HintPath>
+    <Reference Include="System.IO.Abstractions, Version=1.4.0.44, Culture=neutral, PublicKeyToken=d480b5b72fb413da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.IO.Abstractions.1.4.0.44\lib\net35\System.IO.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -107,18 +108,9 @@
     <Compile Include="Modules\ApiRootModule.cs" />
     <Compile Include="Modules\ContentItemsModule.cs" />
     <Compile Include="Modules\ContentStoreModule.cs" />
-    <Compile Include="Persistence\FileSystem\FileSystemContentStore.cs" />
-    <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Modules\ContentStoresModule.cs" />
-    <Compile Include="Model\ContentItem.cs" />
-    <Compile Include="Model\Creator.cs" />
-    <Compile Include="Model\IContentStore.cs" />
-    <Compile Include="Model\Page.cs" />
-    <Compile Include="Persistence\FileSystem\FileSystemContentStoreRepository.cs" />
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Modules\HomeModule.cs" />
-    <Compile Include="Model\StoreType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +132,16 @@
     <Folder Include="App_Data\FileSystemContentStores\TestStore1\" />
     <Folder Include="App_Data\FileSystemContentStores\TestStore2\" />
     <Folder Include="Views\ContentItems\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FfCmS.Core\FfCmS.Core.csproj">
+      <Project>{DEEB9974-52AC-4B7A-8F5D-4B348490B2F1}</Project>
+      <Name>FfCmS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FfCmS.Persistence.FileSystem\FfCmS.Persistence.FileSystem.csproj">
+      <Project>{4eb0abd8-8943-4f84-a636-a89dc993c5f8}</Project>
+      <Name>FfCmS.Persistence.FileSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

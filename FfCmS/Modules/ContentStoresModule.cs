@@ -1,4 +1,5 @@
-﻿using FfCmS.Persistence;
+﻿using FfCmS.Core.Persistence;
+using FfCmS.Persistence;
 using Nancy;
 
 namespace FfCmS.Modules

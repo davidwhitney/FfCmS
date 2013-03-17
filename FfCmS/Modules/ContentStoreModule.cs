@@ -1,4 +1,5 @@
-using FfCmS.Model;
+using FfCmS.Core.Model;
+using FfCmS.Core.Persistence;
 using FfCmS.Persistence;
 using Nancy;
 using Nancy.ModelBinding;

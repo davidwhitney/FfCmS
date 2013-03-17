@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Model
+﻿namespace FfCmS.Core.Model
 {
     public enum StoreType
     {

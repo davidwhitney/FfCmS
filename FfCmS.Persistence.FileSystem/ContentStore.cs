@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Model;
+using FfCmS.Core.Model;
 using Newtonsoft.Json;
 
 namespace FfCmS.Persistence.FileSystem
 {
-    public class FileSystemContentStore : IContentStore
+    public class ContentStore : IContentStore
     {
         public string Id { get; set; }
         public string Description { get; set; }
@@ -16,7 +16,7 @@ namespace FfCmS.Persistence.FileSystem
         private readonly string _directory;
         private readonly IFileSystem _fileSystem;
 
-        public FileSystemContentStore(string directory, IFileSystem fileSystem)
+        public ContentStore(string directory, IFileSystem fileSystem)
         {
             _directory = directory;
             _fileSystem = fileSystem;

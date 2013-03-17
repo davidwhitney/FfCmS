@@ -1,3 +1,4 @@
+using FfCmS.Core.Persistence;
 using FfCmS.Persistence;
 using Nancy;
 

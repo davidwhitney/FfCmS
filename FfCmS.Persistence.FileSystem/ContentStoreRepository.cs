@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Model;
+using FfCmS.Core.Model;
+using FfCmS.Core.Persistence;
 
 namespace FfCmS.Persistence.FileSystem
 {
-    public class FileSystemContentStoreRepository : IRepository<IContentStore>
+    public class ContentStoreRepository : IRepository<IContentStore>
     {
         private readonly IFileSystem _fileSystem;
         private readonly string _appDataLocation;
@@ -22,7 +23,7 @@ namespace FfCmS.Persistence.FileSystem
             get { return _fileSystem.Directory.GetDirectories(FileSystemContentStoresPath); }
         }
 
-        public FileSystemContentStoreRepository(IFileSystem fileSystem, string appDataLocation)
+        public ContentStoreRepository(IFileSystem fileSystem, string appDataLocation)
         {
             _fileSystem = fileSystem;
             _appDataLocation = appDataLocation;
@@ -46,7 +47,7 @@ namespace FfCmS.Persistence.FileSystem
         private IContentStore BuildStoreIndex(string directory)
         {
             var id = directory.Replace(FileSystemContentStoresPath + "\\", "");
-            return new FileSystemContentStore(directory, _fileSystem)
+            return new ContentStore(directory, _fileSystem)
                 {
                     Id = id,
                     Description = id,
