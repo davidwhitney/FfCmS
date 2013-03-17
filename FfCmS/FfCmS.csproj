@@ -105,12 +105,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ContentItem.cs" />
+    <Compile Include="Model\Creator.cs" />
+    <Compile Include="Model\IContentStore.cs" />
+    <Compile Include="Model\Page.cs" />
+    <Compile Include="Model\StoreType.cs" />
     <Compile Include="Modules\ApiRootModule.cs" />
     <Compile Include="Modules\ContentItemsModule.cs" />
     <Compile Include="Modules\ContentStoreModule.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Modules\ContentStoresModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Persistence\FileSystem\ContentStore.cs" />
+    <Compile Include="Persistence\FileSystem\ContentStoreRepository.cs" />
+    <Compile Include="Persistence\FileSystem\PersistenceBootstrapper.cs" />
+    <Compile Include="Persistence\IPersistenceBootstrapper.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
+    <Compile Include="Persistence\RavenDb\ContentStore.cs" />
+    <Compile Include="Persistence\RavenDb\ContentStoreRepository.cs" />
+    <Compile Include="Persistence\RavenDb\PersistenceBootstrapper.cs" />
+    <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,16 +146,6 @@
     <Folder Include="App_Data\FileSystemContentStores\TestStore1\" />
     <Folder Include="App_Data\FileSystemContentStores\TestStore2\" />
     <Folder Include="Views\ContentItems\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FfCmS.Core\FfCmS.Core.csproj">
-      <Project>{DEEB9974-52AC-4B7A-8F5D-4B348490B2F1}</Project>
-      <Name>FfCmS.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FfCmS.Persistence.FileSystem\FfCmS.Persistence.FileSystem.csproj">
-      <Project>{4eb0abd8-8943-4f84-a636-a89dc993c5f8}</Project>
-      <Name>FfCmS.Persistence.FileSystem</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
