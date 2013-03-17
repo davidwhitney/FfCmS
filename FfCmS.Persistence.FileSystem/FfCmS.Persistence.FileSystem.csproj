@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ContentStore.cs" />
     <Compile Include="ContentStoreRepository.cs" />
+    <Compile Include="PersistenceBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

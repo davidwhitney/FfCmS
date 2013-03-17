@@ -44,6 +44,7 @@
     <Compile Include="Model\IContentStore.cs" />
     <Compile Include="Model\Page.cs" />
     <Compile Include="Model\StoreType.cs" />
+    <Compile Include="Persistence\IPersistenceBootstrapper.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

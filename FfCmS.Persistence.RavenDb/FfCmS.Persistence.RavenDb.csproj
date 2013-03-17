@@ -39,7 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentStore.cs" />
+    <Compile Include="ContentStoreRepository.cs" />
+    <Compile Include="PersistenceBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FfCmS.Core\FfCmS.Core.csproj">
+      <Project>{deeb9974-52ac-4b7a-8f5d-4b348490b2f1}</Project>
+      <Name>FfCmS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
