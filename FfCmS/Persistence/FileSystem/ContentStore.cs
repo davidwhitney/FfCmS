@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Core.Model;
+using FfCmS.Model;
 using Newtonsoft.Json;
 
 namespace FfCmS.Persistence.FileSystem

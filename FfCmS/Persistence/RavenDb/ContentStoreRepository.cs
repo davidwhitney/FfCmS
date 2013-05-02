@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Linq;
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
+using FfCmS.Model;
+using Raven.Client;
 
 namespace FfCmS.Persistence.RavenDb
 {
     public class ContentStoreRepository : IRepository<IContentStore>
     {
+        private readonly IDocumentSession _session;
+
+        public ContentStoreRepository(IDocumentSession session)
+        {
+            _session = session;
+        }
+
         public Page<IContentStore> List()
         {
-            throw new NotImplementedException();
+            var results = _session.Query<IContentStore>().ToList();
+            return new Page<IContentStore>(results);
         }
 
         public IContentStore SaveOrUpdate(IContentStore item)
         {
-            throw new NotImplementedException();
+            _session.Store(item);
+            _session.SaveChanges();
+            return item;
         }
 
         public IContentStore Retrieve(string id)

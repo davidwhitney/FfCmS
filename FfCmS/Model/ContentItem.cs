@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FfCmS.Core.Model
+namespace FfCmS.Model
 {
     public class ContentItem
     {
@@ -14,6 +14,8 @@ namespace FfCmS.Core.Model
 
         public List<string> Tags { get; set; }
         public DateTime Created { get; set; }
+
+        public string ContentStoreId { get; set; }
 
         public ContentItem()
         {

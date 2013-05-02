@@ -1,10 +1,14 @@
-﻿@inherits NancyRazorViewBase<FfCmS.Core.Model.Page<FfCmS.Core.Model.IContentStore>>
+﻿@inherits NancyRazorViewBase<FfCmS.Model.Page<FfCmS.Model.IContentStore>>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
 }
 
 <h1>Available Stores</h1>
+
+<form action="/api/stores/" method="POST">
+    <input type="submit" class="btn btn-primary" value="Create new store"/>
+</form>
 
 <table class="table">
     <thead>

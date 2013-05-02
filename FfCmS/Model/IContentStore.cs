@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Core.Model
+﻿namespace FfCmS.Model
 {
     public interface IContentStore
     {
@@ -6,8 +6,7 @@
         string Description { get; set; }
         string DefaultCulture { get; set; }
         StoreType StoreType { get; set; }
-
-
+        
         Page<string> List(int take = 50, int skip = 0);
         ContentItem SaveOrUpdate(ContentItem item);
         ContentItem Retrieve(string id);

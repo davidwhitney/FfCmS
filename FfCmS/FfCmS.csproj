@@ -68,6 +68,19 @@
     <Reference Include="Ninject.Extensions.Conventions">
       <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.2-unstable-2\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.2.0.2288-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Embedded">
+      <HintPath>..\packages\RavenDB.Embedded.2.0.2288-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.0.2288-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Database">
+      <HintPath>..\packages\RavenDB.Database.2.0.2288-Unstable\lib\net40\Raven.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.IO.Abstractions, Version=1.4.0.44, Culture=neutral, PublicKeyToken=d480b5b72fb413da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.IO.Abstractions.1.4.0.44\lib\net35\System.IO.Abstractions.dll</HintPath>
@@ -116,6 +129,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Modules\ContentStoresModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Persistence\ContentStoreForCreation.cs" />
     <Compile Include="Persistence\FileSystem\ContentStore.cs" />
     <Compile Include="Persistence\FileSystem\ContentStoreRepository.cs" />
     <Compile Include="Persistence\FileSystem\PersistenceBootstrapper.cs" />

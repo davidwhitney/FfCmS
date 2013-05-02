@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
+using FfCmS.Model;
 
 namespace FfCmS.Persistence.FileSystem
 {

@@ -1,13 +1,12 @@
 using System;
 using System.IO.Abstractions;
 using System.Linq;
-using System.Web;
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
+using FfCmS.Persistence;
 using FfCmS.Persistence.FileSystem;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
+using Nancy.Diagnostics;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
@@ -15,30 +14,37 @@ namespace FfCmS
 {
     public class Global : NinjectNancyBootstrapper
     {
+        private IPersistenceBootstrapper _persistenceBootstrapper;
+
         protected override void ApplicationStartup(IKernel container, IPipelines pipelines)
         {
             ConfigureViewLocations();
+            pipelines.AfterRequest += ctx => _persistenceBootstrapper.OnRequestEnd(container);
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
         {
             existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
 
-            existingContainer.Bind<IRepository<IContentStore>>().To<ContentStoreRepository>();
-            existingContainer.Bind<string>()
-                             .ToMethod(x => HttpContext.Current.Server.MapPath("~/App_Data"))
-                             .WhenInjectedInto(typeof(ContentStoreRepository));
+            _persistenceBootstrapper = new Persistence.RavenDb.PersistenceBootstrapper();// PersistenceBootstrapper();
+            _persistenceBootstrapper.OnApplicationStart(existingContainer);
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)
         {
             // Perform registrations that should have a request lifetime
+            _persistenceBootstrapper.InRequestScope(container);
         }
 
         protected override void RequestStartup(IKernel container, IPipelines pipelines, NancyContext context)
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
+        }
+
+        protected override DiagnosticsConfiguration DiagnosticsConfiguration
+        {
+            get { return new DiagnosticsConfiguration { Password = @"password" }; }
         }
         
         private void ConfigureViewLocations()
