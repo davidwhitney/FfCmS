@@ -3,6 +3,7 @@ using Ninject;
 using Raven.Abstractions.Util;
 using Raven.Client;
 using Raven.Client.Embedded;
+using Raven.Database.Server;
 
 namespace FfCmS.Persistence.RavenDb
 {
@@ -10,6 +11,8 @@ namespace FfCmS.Persistence.RavenDb
     {
         public void OnApplicationStart(IKernel kernel)
         {
+            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+
             var embeddedStore =
                 new EmbeddableDocumentStore
                     {
@@ -17,15 +20,15 @@ namespace FfCmS.Persistence.RavenDb
                         UseEmbeddedHttpServer = true
                     };
             embeddedStore.Configuration.Port = 8079;
+            embeddedStore.Configuration.AnonymousUserAccessMode = AnonymousUserAccessMode.All;
 
             kernel.Bind<IDocumentStore>().ToMethod(x => embeddedStore).InSingletonScope();
-
+            
             var store = (EmbeddableDocumentStore)kernel.Get<IDocumentStore>();
 
-            Raven.Database.Server.NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
             store.Initialize();
 
-            store.Conventions.RegisterIdConvention<ContentItem>(
+            /*store.Conventions.RegisterIdConvention<ContentItem>(
                 (dbname, commands, item) => "ContentStores/" + item.ContentStoreId + "/" + item.Id);
             store.Conventions.RegisterAsyncIdConvention<ContentItem>(
                 (dbname, commands, item) => new CompletedTask<string>("ContentStores/" + item.ContentStoreId + "/" + item.Id));
@@ -39,7 +42,7 @@ namespace FfCmS.Persistence.RavenDb
             store.Conventions.RegisterIdConvention<ContentStore>(
                 (dbname, commands, item) => "IContentStore/" + item.Id);
             store.Conventions.RegisterAsyncIdConvention<ContentStore>(
-                (dbname, commands, item) => new CompletedTask<string>("IContentStore/" + item.Id));
+                (dbname, commands, item) => new CompletedTask<string>("IContentStore/" + item.Id));*/
 
 
             kernel.Bind<IRepository<IContentStore>>().To<ContentStoreRepository>();

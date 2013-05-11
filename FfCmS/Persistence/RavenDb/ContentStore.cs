@@ -37,6 +37,7 @@ namespace FfCmS.Persistence.RavenDb
         {
             item.ContentStoreId = Id;
             _session.Store(item);
+            _session.SaveChanges();
             return item;
         }
         
