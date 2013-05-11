@@ -129,14 +129,15 @@
     <Compile Include="Global.cs" />
     <Compile Include="Modules\ContentStoresModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
-    <Compile Include="Persistence\ContentStoreForCreation.cs" />
+    <Compile Include="Persistence\ContentStore.cs" />
     <Compile Include="Persistence\FileSystem\ContentStore.cs" />
     <Compile Include="Persistence\FileSystem\ContentStoreRepository.cs" />
     <Compile Include="Persistence\FileSystem\PersistenceBootstrapper.cs" />
     <Compile Include="Persistence\IPersistenceBootstrapper.cs" />
     <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\RavenDb\ContentStore.cs" />
+    <Compile Include="Persistence\RavenDb\ContentStoreQueries.cs" />
     <Compile Include="Persistence\RavenDb\ContentStoreRepository.cs" />
+    <Compile Include="Persistence\IContentStoreQueries.cs" />
     <Compile Include="Persistence\RavenDb\PersistenceBootstrapper.cs" />
     <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

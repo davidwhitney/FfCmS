@@ -16,7 +16,7 @@ namespace FfCmS.Modules
             Post["/"] = _ =>
                 {
                     var id = Guid.NewGuid().ToString();
-                    _storage.ContentStore.SaveOrUpdate(new ContentStoreForCreation(id));
+                    _storage.ContentStore.SaveOrUpdate(new ContentStore(id));
                     return Response.AsRedirect(id);
                 };
             Get["/{storeId}"] = _ => _storage.ContentStore.Retrieve(_.storeId) ?? HttpStatusCode.NotFound; ;

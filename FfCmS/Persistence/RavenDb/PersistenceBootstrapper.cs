@@ -13,36 +13,27 @@ namespace FfCmS.Persistence.RavenDb
         {
             NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
 
-            var embeddedStore =
+            var store =
                 new EmbeddableDocumentStore
                     {
                         ConnectionStringName = "RavenDB",
                         UseEmbeddedHttpServer = true
                     };
-            embeddedStore.Configuration.Port = 8079;
-            embeddedStore.Configuration.AnonymousUserAccessMode = AnonymousUserAccessMode.All;
-
-            kernel.Bind<IDocumentStore>().ToMethod(x => embeddedStore).InSingletonScope();
+            store.Configuration.Port = 8079;
+            store.Configuration.AnonymousUserAccessMode = AnonymousUserAccessMode.All;
             
-            var store = (EmbeddableDocumentStore)kernel.Get<IDocumentStore>();
-
-            store.Initialize();
-
-            /*store.Conventions.RegisterIdConvention<ContentItem>(
-                (dbname, commands, item) => "ContentStores/" + item.ContentStoreId + "/" + item.Id);
-            store.Conventions.RegisterAsyncIdConvention<ContentItem>(
-                (dbname, commands, item) => new CompletedTask<string>("ContentStores/" + item.ContentStoreId + "/" + item.Id));
-
-
-            store.Conventions.RegisterIdConvention<ContentStoreForCreation>(
-                (dbname, commands, item) => "IContentStore/" + item.Id);
-            store.Conventions.RegisterAsyncIdConvention<ContentStoreForCreation>(
-                (dbname, commands, item) => new CompletedTask<string>("IContentStore/" + item.Id));
-
             store.Conventions.RegisterIdConvention<ContentStore>(
-                (dbname, commands, item) => "IContentStore/" + item.Id);
+                (dbname, commands, item) => "ContentStore/" + item.Id);
             store.Conventions.RegisterAsyncIdConvention<ContentStore>(
-                (dbname, commands, item) => new CompletedTask<string>("IContentStore/" + item.Id));*/
+                (dbname, commands, item) => new CompletedTask<string>("ContentStore/" + item.Id));
+
+            store.Conventions.RegisterIdConvention<ContentItem>(
+                (dbname, commands, item) => "ContentStore/" + item.ContentStoreId + "/" + item.Id);
+            store.Conventions.RegisterAsyncIdConvention<ContentItem>(
+                (dbname, commands, item) => new CompletedTask<string>("ContentStore/" + item.ContentStoreId + "/" + item.Id));
+
+            kernel.Bind<IDocumentStore>().ToMethod(x => store).InSingletonScope();
+            store.Initialize();
 
 
             kernel.Bind<IRepository<IContentStore>>().To<ContentStoreRepository>();
@@ -50,12 +41,13 @@ namespace FfCmS.Persistence.RavenDb
             kernel.Bind<IDocumentSession>()
                   .ToMethod(x => x.Kernel.Get<IDocumentStore>().OpenSession());
 
+            kernel.Bind<IContentStoreQueries>().To<ContentStoreQueries>();
+
         }
 
         public void InRequestScope(IKernel kernel)
         {
-            //kernel.Bind<IDocumentSession>()
-            //      .ToMethod(x => x.Kernel.Get<IDocumentStore>().OpenSession());
+            kernel.Rebind<IDocumentSession>().ToMethod(x => x.Kernel.Get<IDocumentStore>().OpenSession());
         }
 
         public void OnRequestEnd(IKernel kernel)

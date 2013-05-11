@@ -6,21 +6,16 @@ using Raven.Client.Linq;
 
 namespace FfCmS.Persistence.RavenDb
 {
-    public class ContentStore : IContentStore
+    public class ContentStoreQueries : IContentStoreQueries
     {
         private readonly IDocumentSession _session;
 
-        public string Id { get; set; }
-        public string Description { get; set; }
-        public string DefaultCulture { get; set; }
-        public StoreType StoreType { get; set; }
-
-        public ContentStore(IDocumentSession session)
+        public ContentStoreQueries(IDocumentSession session)
         {
             _session = session;
         }
 
-        public Page<string> List(int take = 50, int skip = 0)
+        public Page<string> ListContentItems(IContentStore store, int take = 50, int skip = 0)
         {
             var results = _session.Query<ContentItem>()
                                     .Select(contentItem => contentItem)
@@ -33,17 +28,17 @@ namespace FfCmS.Persistence.RavenDb
             return new Page<string>(ids);
         }
 
-        public ContentItem SaveOrUpdate(ContentItem item)
+        public ContentItem SaveOrUpdate(IContentStore store, ContentItem item)
         {
-            item.ContentStoreId = Id;
+            item.ContentStoreId = store.Id;
             _session.Store(item);
             _session.SaveChanges();
             return item;
         }
-        
-        public ContentItem Retrieve(string id)
+
+        public ContentItem Retrieve(IContentStore store, string id)
         {
-            return _session.Load<ContentItem>("ContentStores/" + Id + "/" + id);
+            return _session.Load<ContentItem>("ContentStores/" + store.Id + "/" + id);
         }
     }
 }
