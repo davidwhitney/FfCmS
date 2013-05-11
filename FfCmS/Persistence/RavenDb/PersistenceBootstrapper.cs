@@ -10,15 +10,21 @@ namespace FfCmS.Persistence.RavenDb
     {
         public void OnApplicationStart(IKernel kernel)
         {
-            kernel.Bind<IDocumentStore>().ToMethod(x => new EmbeddableDocumentStore
-                {
-                    DataDirectory = "App_Data",
-                    //UseEmbeddedHttpServer = true
-                }).InSingletonScope();
+            var embeddedStore =
+                new EmbeddableDocumentStore
+                    {
+                        ConnectionStringName = "RavenDB",
+                        UseEmbeddedHttpServer = true
+                    };
+            embeddedStore.Configuration.Port = 8079;
 
-            var store = kernel.Get<IDocumentStore>();
+            kernel.Bind<IDocumentStore>().ToMethod(x => embeddedStore).InSingletonScope();
 
+            var store = (EmbeddableDocumentStore)kernel.Get<IDocumentStore>();
+
+            Raven.Database.Server.NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
             store.Initialize();
+
             store.Conventions.RegisterIdConvention<ContentItem>(
                 (dbname, commands, item) => "ContentStores/" + item.ContentStoreId + "/" + item.Id);
             store.Conventions.RegisterAsyncIdConvention<ContentItem>(
@@ -37,7 +43,7 @@ namespace FfCmS.Persistence.RavenDb
 
 
             kernel.Bind<IRepository<IContentStore>>().To<ContentStoreRepository>();
-
+            
             kernel.Bind<IDocumentSession>()
                   .ToMethod(x => x.Kernel.Get<IDocumentStore>().OpenSession());
 
@@ -52,6 +58,7 @@ namespace FfCmS.Persistence.RavenDb
         public void OnRequestEnd(IKernel kernel)
         {
             var docSession = kernel.Get<IDocumentSession>();
+            docSession.SaveChanges();
             docSession.Dispose();
         }
     }

@@ -16,14 +16,13 @@ namespace FfCmS.Persistence.RavenDb
 
         public Page<IContentStore> List()
         {
-            var results = _session.Query<IContentStore>().ToList();
+            var results = _session.Query<IContentStore>().Take(100).ToList();
             return new Page<IContentStore>(results);
         }
 
         public IContentStore SaveOrUpdate(IContentStore item)
         {
             _session.Store(item);
-            _session.SaveChanges();
             return item;
         }
 
