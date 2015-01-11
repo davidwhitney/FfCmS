@@ -1,7 +1,7 @@
-using FfCmS.Server.Persistence;
+using FfCms.Server.Persistence;
 using Nancy;
 
-namespace FfCmS.Server.Modules
+namespace FfCms.Server.Modules
 {
     public class ContentItemsModule : NancyModule
     {

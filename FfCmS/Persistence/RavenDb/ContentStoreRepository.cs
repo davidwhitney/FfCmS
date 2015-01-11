@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using FfCmS.Server.Model;
+using FfCms.Server.Model;
 
-namespace FfCmS.Server.Persistence.RavenDb
+namespace FfCms.Server.Persistence.RavenDb
 {
     public class ContentStoreRepository : IRepository<IContentStore>
     {

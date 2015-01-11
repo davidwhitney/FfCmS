@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Server.Model
+﻿namespace FfCms.Server.Model
 {
     public interface IContentStore
     {

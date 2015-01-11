@@ -2,16 +2,16 @@ using System;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Web;
-using FfCmS.Server.Model;
-using FfCmS.Server.Persistence;
-using FfCmS.Server.Persistence.FileSystem;
+using FfCms.Server.Model;
+using FfCms.Server.Persistence;
+using FfCms.Server.Persistence.FileSystem;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
-namespace FfCmS.Server
+namespace FfCms.Server
 {
     public class Global : NinjectNancyBootstrapper
     {

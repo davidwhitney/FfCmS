@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Server.Model;
+using FfCms.Server.Model;
 
-namespace FfCmS.Server.Persistence.FileSystem
+namespace FfCms.Server.Persistence.FileSystem
 {
     public class ContentStoreRepository : IRepository<IContentStore>
     {

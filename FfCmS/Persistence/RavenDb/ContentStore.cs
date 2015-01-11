@@ -1,7 +1,7 @@
 ﻿using System;
-using FfCmS.Server.Model;
+using FfCms.Server.Model;
 
-namespace FfCmS.Server.Persistence.RavenDb
+namespace FfCms.Server.Persistence.RavenDb
 {
     public class ContentStore : IContentStore
     {

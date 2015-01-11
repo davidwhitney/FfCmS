@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace FfCmS.Server.Modules
+namespace FfCms.Server.Modules
 {
     public class HomeModule : NancyModule
     {

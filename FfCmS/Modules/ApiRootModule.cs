@@ -1,7 +1,7 @@
 using System.Linq;
 using Nancy;
 
-namespace FfCmS.Server.Modules
+namespace FfCms.Server.Modules
 {
     public class ApiRootModule : NancyModule
     {

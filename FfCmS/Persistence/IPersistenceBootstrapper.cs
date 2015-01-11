@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Server.Persistence
+﻿namespace FfCms.Server.Persistence
 {
     public interface IPersistenceBootstrapper
     {

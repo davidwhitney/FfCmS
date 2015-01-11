@@ -1,4 +1,4 @@
-﻿namespace FfCmS.Server.Persistence.FileSystem
+﻿namespace FfCms.Server.Persistence.FileSystem
 {
     public class PersistenceBootstrapper : IPersistenceBootstrapper
     {

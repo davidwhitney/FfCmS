@@ -1,9 +1,9 @@
-using FfCmS.Server.Model;
-using FfCmS.Server.Persistence;
+using FfCms.Server.Model;
+using FfCms.Server.Persistence;
 using Nancy;
 using Nancy.ModelBinding;
 
-namespace FfCmS.Server.Modules
+namespace FfCms.Server.Modules
 {
     public class ContentStoreModule : NancyModule
     {
