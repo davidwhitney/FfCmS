@@ -1,4 +1,4 @@
-using FfCms.Server.Persistence;
+using FfCms.Persistence;
 using Nancy;
 
 namespace FfCms.Server.Modules

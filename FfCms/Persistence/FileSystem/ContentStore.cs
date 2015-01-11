@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCms.Server.Model;
+using FfCms.Model;
 using Newtonsoft.Json;
 
-namespace FfCms.Server.Persistence.FileSystem
+namespace FfCms.Persistence.FileSystem
 {
     public class ContentStore : IContentStore
     {

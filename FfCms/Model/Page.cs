@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FfCms.Server.Model
+namespace FfCms.Model
 {
     public class Page<TData> : List<TData>
     {

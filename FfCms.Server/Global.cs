@@ -2,9 +2,9 @@ using System;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Web;
-using FfCms.Server.Model;
-using FfCms.Server.Persistence;
-using FfCms.Server.Persistence.FileSystem;
+using FfCms.Model;
+using FfCms.Persistence;
+using FfCms.Persistence.FileSystem;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
@@ -49,29 +49,29 @@ namespace FfCms.Server
             Conventions.ViewLocationConventions.Add(
                 (viewName, model, context) => string.Concat("Views/", context.ModuleName, "/", viewName));
 
-            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
-            {
-                Type type = model.GetType();
-                var firstInterface = type.GetInterfaces().FirstOrDefault();
-                return firstInterface != null
-                    ? string.Concat("Views/", context.ModuleName, "/", firstInterface.Name)
-                    : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
-            });
+            //Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+            //{
+            //    Type type = model.GetType();
+            //    var firstInterface = type.GetInterfaces().FirstOrDefault();
+            //    return firstInterface != null
+            //        ? string.Concat("Views/", context.ModuleName, "/", firstInterface.Name)
+            //        : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
+            //});
 
-            Conventions.ViewLocationConventions.Add((viewName, model, context) =>
-            {
-                Type type = model.GetType();
-                var isGeneric = type.IsGenericType;
+            //Conventions.ViewLocationConventions.Add((viewName, model, context) =>
+            //{
+            //    Type type = model.GetType();
+            //    var isGeneric = type.IsGenericType;
 
-                var nameToLookup = viewName;
-                if (isGeneric)
-                {
-                    var name = type.GetGenericArguments()[0].Name;
-                    nameToLookup = nameToLookup.Replace("`1", "[" + name + "]");
-                }
+            //    var nameToLookup = viewName;
+            //    if (isGeneric)
+            //    {
+            //        var name = type.GetGenericArguments()[0].Name;
+            //        nameToLookup = nameToLookup.Replace("`1", "[" + name + "]");
+            //    }
 
-                return string.Concat("Views/", context.ModuleName, "/", nameToLookup);
-            });
+            //    return string.Concat("Views/", context.ModuleName, "/", nameToLookup);
+            //});
         }
 
         private static bool IsServiceType(Type type)

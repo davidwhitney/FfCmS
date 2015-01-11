@@ -42,35 +42,36 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
-      <HintPath>..\packages\Nancy.0.16.1\lib\net40\Nancy.dll</HintPath>
+      <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Bootstrappers.Ninject">
-      <HintPath>..\packages\Nancy.Bootstrappers.Ninject.0.16.1\lib\net40\Nancy.Bootstrappers.Ninject.dll</HintPath>
+      <HintPath>..\packages\Nancy.Bootstrappers.Ninject.0.23.2\lib\net40\Nancy.Bootstrappers.Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.16.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.23.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Serialization.JsonNet">
-      <HintPath>..\packages\Nancy.Serialization.JsonNet.0.16.1\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+      <HintPath>..\packages\Nancy.Serialization.JsonNet.0.23.2\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
-      <HintPath>..\packages\Nancy.Viewengines.Razor.0.16.1\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.23.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.2-unstable-8\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.ChildKernel">
-      <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.0.2-unstable-1\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
+      <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.2.0.0\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.Conventions">
-      <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.2-unstable-2\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <HintPath>..\packages\ninject.extensions.conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Abstractions, Version=1.4.0.44, Culture=neutral, PublicKeyToken=d480b5b72fb413da, processorArchitecture=MSIL">
+    <Reference Include="System.IO.Abstractions, Version=1.4.0.92, Culture=neutral, PublicKeyToken=d480b5b72fb413da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.IO.Abstractions.1.4.0.44\lib\net35\System.IO.Abstractions.dll</HintPath>
+      <HintPath>..\packages\System.IO.Abstractions.1.4.0.92\lib\net35\System.IO.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -81,9 +82,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Razor, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.1\lib\net40\System.Web.Razor.dll</HintPath>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor.Unofficial">
+      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -105,26 +109,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ContentItem.cs" />
-    <Compile Include="Model\Creator.cs" />
-    <Compile Include="Model\IContentStore.cs" />
-    <Compile Include="Model\Page.cs" />
-    <Compile Include="Model\StoreType.cs" />
     <Compile Include="Modules\ApiRootModule.cs" />
     <Compile Include="Modules\ContentItemsModule.cs" />
     <Compile Include="Modules\ContentStoreModule.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Modules\ContentStoresModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
-    <Compile Include="Persistence\FileSystem\ContentStore.cs" />
-    <Compile Include="Persistence\FileSystem\ContentStoreRepository.cs" />
-    <Compile Include="Persistence\FileSystem\PersistenceBootstrapper.cs" />
-    <Compile Include="Persistence\IPersistenceBootstrapper.cs" />
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\RavenDb\ContentStore.cs" />
-    <Compile Include="Persistence\RavenDb\ContentStoreRepository.cs" />
-    <Compile Include="Persistence\RavenDb\PersistenceBootstrapper.cs" />
-    <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +136,12 @@
     <Folder Include="App_Data\FileSystemContentStores\TestStore1\" />
     <Folder Include="App_Data\FileSystemContentStores\TestStore2\" />
     <Folder Include="Views\ContentItems\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FfCms\FfCms.csproj">
+      <Project>{5715eb2f-4a77-4b56-917d-ada8ec586a57}</Project>
+      <Name>FfCms</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -175,8 +171,8 @@
   <PropertyGroup>
     <PostBuildEvent>
 if $(ConfigurationName) == Debug (
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.16.1\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.16.1\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.23.2\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.23.2\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
 )</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

@@ -1,4 +1,4 @@
-﻿namespace FfCms.Server.Persistence.RavenDb
+﻿namespace FfCms.Persistence.FileSystem
 {
     public class PersistenceBootstrapper : IPersistenceBootstrapper
     {

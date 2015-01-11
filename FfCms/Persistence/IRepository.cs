@@ -1,6 +1,6 @@
-﻿using FfCms.Server.Model;
+﻿using FfCms.Model;
 
-namespace FfCms.Server.Persistence
+namespace FfCms.Persistence
 {
     public interface IRepository<TType>
     {
