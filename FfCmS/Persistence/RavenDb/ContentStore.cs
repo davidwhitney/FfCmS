@@ -1,7 +1,7 @@
 ﻿using System;
-using FfCmS.Core.Model;
+using FfCmS.Server.Model;
 
-namespace FfCmS.Persistence.RavenDb
+namespace FfCmS.Server.Persistence.RavenDb
 {
     public class ContentStore : IContentStore
     {
@@ -19,7 +19,7 @@ namespace FfCmS.Persistence.RavenDb
         {
             throw new NotImplementedException();
         }
-        
+
         public ContentItem Retrieve(string id)
         {
             throw new NotImplementedException();

@@ -1,6 +1,8 @@
-﻿namespace FfCmS.Modules
+﻿using Nancy;
+
+namespace FfCmS.Server.Modules
 {
-    public class HomeModule : Nancy.NancyModule
+    public class HomeModule : NancyModule
     {
         public HomeModule()
         {

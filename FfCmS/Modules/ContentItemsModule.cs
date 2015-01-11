@@ -1,8 +1,7 @@
-using FfCmS.Core.Persistence;
-using FfCmS.Persistence;
+using FfCmS.Server.Persistence;
 using Nancy;
 
-namespace FfCmS.Modules
+namespace FfCmS.Server.Modules
 {
     public class ContentItemsModule : NancyModule
     {
@@ -13,16 +12,16 @@ namespace FfCmS.Modules
         {
             _storage = storage;
             Get["/"] = _ =>
+            {
+                var store = _storage.ContentStore.Retrieve((string) _.storeId);
+                if (store == null)
                 {
-                    var store = _storage.ContentStore.Retrieve((string) _.storeId);
-                    if (store == null)
-                    {
-                        return HttpStatusCode.NotFound;
-                    }
+                    return HttpStatusCode.NotFound;
+                }
 
-                    var item = store.Retrieve(_.itemId);
-                    return item ?? HttpStatusCode.NotFound;
-                };
+                var item = store.Retrieve(_.itemId);
+                return item ?? HttpStatusCode.NotFound;
+            };
         }
     }
 }

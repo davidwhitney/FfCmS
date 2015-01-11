@@ -1,10 +1,9 @@
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
-using FfCmS.Persistence;
+using FfCmS.Server.Model;
+using FfCmS.Server.Persistence;
 using Nancy;
 using Nancy.ModelBinding;
 
-namespace FfCmS.Modules
+namespace FfCmS.Server.Modules
 {
     public class ContentStoreModule : NancyModule
     {
@@ -16,27 +15,26 @@ namespace FfCmS.Modules
             _storage = storage;
 
             Get["/"] = _ =>
+            {
+                var store = _storage.ContentStore.Retrieve((string) _.storeId);
+                if (store == null)
                 {
-                    var store = _storage.ContentStore.Retrieve((string)_.storeId);
-                    if (store == null)
-                    {
-                        return HttpStatusCode.NotFound;
-                    }
+                    return HttpStatusCode.NotFound;
+                }
 
-                    return store.List(50, 0);
-                };
+                return store.List(50, 0);
+            };
             Post["/"] = _ =>
+            {
+                var posted = this.Bind<ContentItem>("id");
+                var store = _storage.ContentStore.Retrieve((string) _.storeId);
+                if (store == null)
                 {
-                    var posted = this.Bind<ContentItem>("id");
-                    var store = _storage.ContentStore.Retrieve((string)_.storeId); 
-                    if (store == null)
-                    {
-                        return HttpStatusCode.NotFound;
-                    }
+                    return HttpStatusCode.NotFound;
+                }
 
-                    return store.SaveOrUpdate(posted);
-                };
-
+                return store.SaveOrUpdate(posted);
+            };
         }
     }
 }

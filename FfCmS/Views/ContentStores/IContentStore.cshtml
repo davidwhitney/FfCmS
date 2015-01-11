@@ -1,4 +1,4 @@
-﻿@inherits NancyRazorViewBase<FfCmS.Core.Model.IContentStore>
+﻿@inherits NancyRazorViewBase<FfCmS.Server.Model.IContentStore>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
@@ -8,23 +8,23 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>Store Id</th>
-            <th>Description</th>
-            <th>Store Type</th>
-            <th>Default Culture</th>
-            <th>View</th>
-        </tr>
+    <tr>
+        <th>Store Id</th>
+        <th>Description</th>
+        <th>Store Type</th>
+        <th>Default Culture</th>
+        <th>View</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>@Model.Id</td>
-            <td>@Model.Description</td>
-            <td>@Model.StoreType</td>
-            <td>@Model.DefaultCulture</td>
-            <td>
-                <a href="@Model.Id/content" class="btn btn-primary">View Content</a>
-            </td>
-        </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Description</td>
+        <td>@Model.StoreType</td>
+        <td>@Model.DefaultCulture</td>
+        <td>
+            <a href="@Model.Id/content" class="btn btn-primary">View Content</a>
+        </td>
+    </tr>
     </tbody>
 </table>

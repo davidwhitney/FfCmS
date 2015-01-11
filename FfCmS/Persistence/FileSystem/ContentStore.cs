@@ -1,18 +1,13 @@
 ﻿using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Core.Model;
+using FfCmS.Server.Model;
 using Newtonsoft.Json;
 
-namespace FfCmS.Persistence.FileSystem
+namespace FfCmS.Server.Persistence.FileSystem
 {
     public class ContentStore : IContentStore
     {
-        public string Id { get; set; }
-        public string Description { get; set; }
-        public string DefaultCulture { get; set; }
-        public StoreType StoreType { get; set; }
-
         private readonly string _directory;
         private readonly IFileSystem _fileSystem;
 
@@ -21,6 +16,11 @@ namespace FfCmS.Persistence.FileSystem
             _directory = directory;
             _fileSystem = fileSystem;
         }
+
+        public string Id { get; set; }
+        public string Description { get; set; }
+        public string DefaultCulture { get; set; }
+        public StoreType StoreType { get; set; }
 
         public Page<string> List(int take = 50, int skip = 0)
         {
@@ -43,7 +43,7 @@ namespace FfCmS.Persistence.FileSystem
 
             return item;
         }
-        
+
         public ContentItem Retrieve(string id)
         {
             var fileName = FileNameForContentItemId(id);

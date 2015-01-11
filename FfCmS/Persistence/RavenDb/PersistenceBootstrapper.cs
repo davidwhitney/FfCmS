@@ -1,9 +1,6 @@
-﻿using System;
-using FfCmS.Core.Persistence;
-
-namespace FfCmS.Persistence.RavenDb
+﻿namespace FfCmS.Server.Persistence.RavenDb
 {
-    public class PersistenceBootstrapper : IPersistenceBootstrapper 
+    public class PersistenceBootstrapper : IPersistenceBootstrapper
     {
         public void OnApplicationStart()
         {

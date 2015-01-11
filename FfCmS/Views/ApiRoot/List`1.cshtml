@@ -1,6 +1,4 @@
-﻿@using System
-@using Newtonsoft.Json
-@inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<Nancy.Routing.RouteDescription>>
+﻿@inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<Nancy.Routing.RouteDescription>>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
@@ -10,21 +8,24 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>Method</th>
-            <th>Uri</th>
-            <th>Segments</th>
-            <th>Description</th>
-        </tr>
+    <tr>
+        <th>Method</th>
+        <th>Uri</th>
+        <th>Segments</th>
+        <th>Description</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model){
-            <tr>
-                <td>@item.Method</td>
-                <td><a href="/@item.Path">@item.Path</a></td>
-                <td>@item.Segments</td>
-                <td>@item.Description</td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Method</td>
+            <td>
+                <a href="/@item.Path">@item.Path</a>
+            </td>
+            <td>@item.Segments</td>
+            <td>@item.Description</td>
+        </tr>
+    }
     </tbody>
 </table>

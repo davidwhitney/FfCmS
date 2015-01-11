@@ -2,16 +2,16 @@ using System;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Web;
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
-using FfCmS.Persistence.FileSystem;
+using FfCmS.Server.Model;
+using FfCmS.Server.Persistence;
+using FfCmS.Server.Persistence.FileSystem;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
-namespace FfCmS
+namespace FfCmS.Server
 {
     public class Global : NinjectNancyBootstrapper
     {
@@ -22,12 +22,13 @@ namespace FfCmS
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
         {
-            existingContainer.Bind(scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
+            existingContainer.Bind(
+                scanner => scanner.FromAssemblyContaining<IFileSystem>().Select(IsServiceType).BindDefaultInterfaces());
 
             existingContainer.Bind<IRepository<IContentStore>>().To<ContentStoreRepository>();
             existingContainer.Bind<string>()
-                             .ToMethod(x => HttpContext.Current.Server.MapPath("~/App_Data"))
-                             .WhenInjectedInto(typeof(ContentStoreRepository));
+                .ToMethod(x => HttpContext.Current.Server.MapPath("~/App_Data"))
+                .WhenInjectedInto(typeof (ContentStoreRepository));
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)
@@ -40,7 +41,7 @@ namespace FfCmS
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
         }
-        
+
         private void ConfigureViewLocations()
         {
             Conventions.ViewLocationConventions.Add(
@@ -53,8 +54,8 @@ namespace FfCmS
                 Type type = model.GetType();
                 var firstInterface = type.GetInterfaces().FirstOrDefault();
                 return firstInterface != null
-                           ? string.Concat("Views/", context.ModuleName, "/", firstInterface.Name)
-                           : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
+                    ? string.Concat("Views/", context.ModuleName, "/", firstInterface.Name)
+                    : string.Concat("Views/", context.ModuleName, "/", Guid.NewGuid());
             });
 
             Conventions.ViewLocationConventions.Add((viewName, model, context) =>

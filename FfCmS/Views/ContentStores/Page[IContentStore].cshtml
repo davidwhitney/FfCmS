@@ -1,4 +1,4 @@
-﻿@inherits NancyRazorViewBase<FfCmS.Core.Model.Page<FfCmS.Core.Model.IContentStore>>
+﻿@inherits NancyRazorViewBase<FfCmS.Server.Model.Page<FfCmS.Server.Model.IContentStore>>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout.cshtml";
@@ -8,25 +8,26 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>Store Id</th>
-            <th>Description</th>
-            <th>Store Type</th>
-            <th>Default Culture</th>
-            <th>View</th>
-        </tr>
+    <tr>
+        <th>Store Id</th>
+        <th>Description</th>
+        <th>Store Type</th>
+        <th>Default Culture</th>
+        <th>View</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model){
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Description</td>
-                <td>@item.StoreType</td>
-                <td>@item.DefaultCulture</td>
-                <td>
-                    <a href="@item.Id" class="btn btn-primary">View Store</a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Description</td>
+            <td>@item.StoreType</td>
+            <td>@item.DefaultCulture</td>
+            <td>
+                <a href="@item.Id" class="btn btn-primary">View Store</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>

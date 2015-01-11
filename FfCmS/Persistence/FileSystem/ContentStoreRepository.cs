@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using FfCmS.Core.Model;
-using FfCmS.Core.Persistence;
+using FfCmS.Server.Model;
 
-namespace FfCmS.Persistence.FileSystem
+namespace FfCmS.Server.Persistence.FileSystem
 {
     public class ContentStoreRepository : IRepository<IContentStore>
     {
-        private readonly IFileSystem _fileSystem;
         private readonly string _appDataLocation;
+        private readonly IFileSystem _fileSystem;
+
+        public ContentStoreRepository(IFileSystem fileSystem, string appDataLocation)
+        {
+            _fileSystem = fileSystem;
+            _appDataLocation = appDataLocation;
+        }
 
         private string FileSystemContentStoresPath
         {
@@ -21,12 +26,6 @@ namespace FfCmS.Persistence.FileSystem
         private IEnumerable<string> ContentStores
         {
             get { return _fileSystem.Directory.GetDirectories(FileSystemContentStoresPath); }
-        }
-
-        public ContentStoreRepository(IFileSystem fileSystem, string appDataLocation)
-        {
-            _fileSystem = fileSystem;
-            _appDataLocation = appDataLocation;
         }
 
         public Page<IContentStore> List()
@@ -48,12 +47,12 @@ namespace FfCmS.Persistence.FileSystem
         {
             var id = directory.Replace(FileSystemContentStoresPath + "\\", "");
             return new ContentStore(directory, _fileSystem)
-                {
-                    Id = id,
-                    Description = id,
-                    DefaultCulture = "en-GB",
-                    StoreType = StoreType.General
-                };
+            {
+                Id = id,
+                Description = id,
+                DefaultCulture = "en-GB",
+                StoreType = StoreType.General
+            };
         }
     }
 }

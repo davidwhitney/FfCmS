@@ -1,14 +1,14 @@
-﻿using FfCmS.Core.Model;
+﻿using FfCmS.Server.Model;
 
-namespace FfCmS.Core.Persistence
+namespace FfCmS.Server.Persistence
 {
     public class Storage
     {
-        public IRepository<IContentStore> ContentStore { get; set; }
-
         public Storage(IRepository<IContentStore> contentStore)
         {
             ContentStore = contentStore;
         }
+
+        public IRepository<IContentStore> ContentStore { get; set; }
     }
 }

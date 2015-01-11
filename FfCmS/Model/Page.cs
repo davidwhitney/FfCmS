@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FfCmS.Core.Model
+namespace FfCmS.Server.Model
 {
     public class Page<TData> : List<TData>
     {
@@ -13,7 +13,7 @@ namespace FfCmS.Core.Model
         {
             AddRange(items);
         }
-        
+
         public Page(IEnumerable<TData> initialPayload, int pageNumber, int pageSize, int totalResultSetSize)
             : this(pageNumber, pageSize, totalResultSetSize)
         {
@@ -44,8 +44,8 @@ namespace FfCmS.Core.Model
                 if (Hits <= PageSize)
                     return 1;
 
-                var totalPages = Hits / PageSize;
-                if ((Hits % PageSize) > 0)
+                var totalPages = Hits/PageSize;
+                if ((Hits%PageSize) > 0)
                 {
                     totalPages += 1;
                 }
