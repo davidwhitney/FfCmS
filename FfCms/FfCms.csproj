@@ -36,6 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Abstractions">
@@ -48,17 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentItem.cs" />
-    <Compile Include="Creator.cs" />
+    <Compile Include="ContentModel\ContentItem.cs" />
+    <Compile Include="ContentModel\ContentStoreReference.cs" />
+    <Compile Include="ContentModel\Creator.cs" />
+    <Compile Include="FfCmsCore.cs" />
+    <Compile Include="IAccessStoreData.cs" />
+    <Compile Include="IContentStorageAdapter.cs" />
     <Compile Include="IContentStore.cs" />
+    <Compile Include="ContentModel\IContentStoreReference.cs" />
     <Compile Include="Page.cs" />
+    <Compile Include="ContentIdentityGenerator.cs" />
+    <Compile Include="StorageAdapters\FileSystem\FileSystemAdapter.cs" />
+    <Compile Include="StoreDataRepository.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="StoreType.cs" />
-    <Compile Include="Persistence\FileSystem\ContentStore.cs" />
-    <Compile Include="Persistence\FileSystem\ContentStoreRepository.cs" />
-    <Compile Include="Persistence\FileSystem\PersistenceBootstrapper.cs" />
-    <Compile Include="Persistence\IPersistenceBootstrapper.cs" />
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FfCms
+namespace FfCms.ContentModel
 {
     public class ContentItem
     {

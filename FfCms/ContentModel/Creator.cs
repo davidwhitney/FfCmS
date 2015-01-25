@@ -1,4 +1,4 @@
-﻿namespace FfCms
+﻿namespace FfCms.ContentModel
 {
     public class Creator
     {
