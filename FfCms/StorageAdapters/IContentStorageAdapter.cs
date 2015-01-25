@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FfCms.ContentModel;
 
-namespace FfCms
+namespace FfCms.StorageAdapters
 {
     public interface IContentStorageAdapter
     {

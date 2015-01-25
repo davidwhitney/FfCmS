@@ -1,15 +1,16 @@
 ﻿using System;
 using FfCms.ContentModel;
+using FfCms.StorageAdapters;
 
 namespace FfCms
 {
-    public class StoreDataRepository : IAccessStoreData
+    public class ContentRepository : IAccessContent
     {
         public string StoreKey { get; private set; }
 
         private readonly IContentStorageAdapter _contentStorageAdapter;
 
-        public StoreDataRepository(string storeKey, IContentStorageAdapter contentStorageAdapter, IContentIdentityGenerator identityGenerator)
+        public ContentRepository(string storeKey, IContentStorageAdapter contentStorageAdapter, IContentIdentityGenerator identityGenerator)
         {
             _contentStorageAdapter = contentStorageAdapter;
             StoreKey = storeKey;

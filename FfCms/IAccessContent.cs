@@ -2,8 +2,12 @@
 
 namespace FfCms
 {
-    public interface IContentStore : IContentStoreReference
+    /// <summary>
+    /// So much dupe from old prototype. CLEAN!
+    /// </summary>
+    public interface IAccessContent
     {
+        string StoreKey { get; }
         Page<string> List(int take = 50, int skip = 0);
         ContentItem SaveOrUpdate(ContentItem item);
         ContentItem Retrieve(string id);

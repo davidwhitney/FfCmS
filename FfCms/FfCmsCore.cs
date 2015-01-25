@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FfCms.ContentModel;
+using FfCms.StorageAdapters;
 
 namespace FfCms
 {
@@ -24,7 +25,7 @@ namespace FfCms
             return _contentStorageAdapter.List() ?? new List<IContentStoreReference>();
         }
 
-        public IAccessStoreData Store(string storeKey)
+        public IAccessContent Store(string storeKey)
         {
             var allStores = _contentStorageAdapter.List();
             if (allStores.All(x => x.Id != storeKey))  // TODO: Hey Resharper, is that really any better than !.Any()?
@@ -32,7 +33,7 @@ namespace FfCms
                 throw new Exception(string.Format("Store does not exist with key '{0}'", storeKey));
             }
 
-            return new StoreDataRepository(storeKey, _contentStorageAdapter, new ContentIdentityGenerator());
+            return new ContentRepository(storeKey, _contentStorageAdapter, new ContentIdentityGenerator());
         }
     }
 }

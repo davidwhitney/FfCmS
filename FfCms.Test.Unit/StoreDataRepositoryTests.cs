@@ -1,5 +1,6 @@
 using System;
 using FfCms.ContentModel;
+using FfCms.StorageAdapters;
 using Moq;
 using NUnit.Framework;
 
@@ -8,7 +9,7 @@ namespace FfCms.Test.Unit
     [TestFixture]   
     public class StoreDataRepositoryTests
     {
-        private StoreDataRepository _dataRepo;
+        private ContentRepository _dataRepo;
         private Mock<IContentStorageAdapter> _fakeStorageAdapter;
         
         private const string IdThatExists = "id-that-exists";
@@ -18,7 +19,7 @@ namespace FfCms.Test.Unit
         public void SetUp()
         {
             _fakeStorageAdapter = new Mock<IContentStorageAdapter>();
-            _dataRepo = new StoreDataRepository(ValidContainerId, _fakeStorageAdapter.Object);
+            _dataRepo = new ContentRepository(ValidContainerId, _fakeStorageAdapter.Object);
         }
 
         [Test]

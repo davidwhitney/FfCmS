@@ -55,16 +55,15 @@
     <Compile Include="ContentModel\ContentStoreReference.cs" />
     <Compile Include="ContentModel\Creator.cs" />
     <Compile Include="FfCmsCore.cs" />
-    <Compile Include="IAccessStoreData.cs" />
-    <Compile Include="IContentStorageAdapter.cs" />
-    <Compile Include="IContentStore.cs" />
+    <Compile Include="IAccessContent.cs" />
+    <Compile Include="StorageAdapters\IContentStorageAdapter.cs" />
     <Compile Include="ContentModel\IContentStoreReference.cs" />
-    <Compile Include="Page.cs" />
+    <Compile Include="ContentModel\Page.cs" />
     <Compile Include="ContentIdentityGenerator.cs" />
     <Compile Include="StorageAdapters\FileSystem\FileSystemAdapter.cs" />
-    <Compile Include="StoreDataRepository.cs" />
+    <Compile Include="ContentRepository.cs" />
     <Compile Include="StringExtensions.cs" />
-    <Compile Include="StoreType.cs" />
+    <Compile Include="ContentModel\StoreType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FfCms.ContentModel;
+using FfCms.StorageAdapters;
 using Moq;
 using NUnit.Framework;
 
