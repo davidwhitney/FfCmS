@@ -1,4 +1,3 @@
-using FfCms.Model;
 using FfCms.Persistence;
 using Nancy;
 using Nancy.ModelBinding;

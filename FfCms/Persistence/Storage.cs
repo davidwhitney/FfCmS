@@ -1,6 +1,4 @@
-﻿using FfCms.Model;
-
-namespace FfCms.Persistence
+﻿namespace FfCms.Persistence
 {
     public class Storage
     {
